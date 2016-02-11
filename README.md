@@ -6,7 +6,7 @@ This is provided by the function text2datetime.text2datetime
 
 Date should be in one of the following forms:
 
- - *Relative Modifiers*
+ - **Relative Modifiers**
 
 Relative modifiers represent a delta from current time, current date.
 
@@ -28,7 +28,7 @@ Each modifier starts with a direction (+ or -), then a number, then a unit.
 	for example "+3d 12:00:00" would be noon three days from now.
 
 
- - *Fixed String*
+ - **Fixed String**
 
    One of the following fixed strings:
 
@@ -39,7 +39,7 @@ Each modifier starts with a direction (+ or -), then a number, then a unit.
 		"yesterday"     - Beginning of yesterday
 		"yesterday end" - End of yesterday
 
-  - *ctime format*
+ - **ctime format**
 
    Ctime format with optional day of week
 
@@ -47,13 +47,13 @@ Each modifier starts with a direction (+ or -), then a number, then a unit.
 
      Example: Wed Jan 28 12:28:13 2015
 
-  - *American Slash Format*
+ - **American Slash Format**
 
 	numeric Month/Date/Year with optional time as hour:minute or hour:minute:second. Clock is a 24-hour clock, 00=midnight, unless "PM" or "AM" is at the end.
 
     e.x.: 1/28/2015   or  1/28/2015  12:28:13
 
-  - *Time Only*
+ - **Time Only**
 
 	time as hour:minute or hour:minute:second will use current date. Clock is a 24 hour clock, 00=midnight, unless "PM" or "AM" is at the end.
 
