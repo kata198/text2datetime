@@ -18,10 +18,10 @@ except ImportError as e:
     raise e
 
 
-__version__ = '1.0.0'
-__version_tuple__ = (1, 0, 0)
+__version__ = '1.0.1'
+__version_tuple__ = (1, 0, 1)
 
-__all__ = ('FORMAT_HELP_MSG', 'text2datetime', 'applyFixedTimeComponent')
+__all__ = ('FORMAT_HELP_MSG', 'text2datetime', 'applyFixedTimeComponent', 'applyRelativeTimeComponents', 'applyTimeWords', 'getDatetimeFromEuropeanTime', 'getDatetimeFromAmericanTime', 'getDatetimeFromDateStr')
 
 
 # Extensive help message describing the formats accepted.
@@ -176,6 +176,8 @@ def applyRelativeTimeComponents(datetimeObj, timeStr):
     '''
         applyRelativeTimeComponents - Apply the provided relative adjustments to the given datetime.datetime object.
 
+        PUBLIC FUNCTION
+
         For more information on the supported relative components, see text2datetime.FORMAT_HELP_MSG
 
         This method only supports relative time components (like +4mo +5d). For all possible time strings, use the text2datetime method.
@@ -267,6 +269,8 @@ def applyFixedTimeComponent(datetimeObj, fixedTimeStr):
 def applyTimeWords(datetimeObj, timeStr):
     '''
         applyTimeWords - Apply one of several words that describe a time delta to the given datetime object. Example, "tomorrow"
+
+        PUBLIC FUNCTION
 
         This method supports only time words, for all possible time transformations, use the text2datetime method.
 

@@ -6,7 +6,7 @@
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
 <tr bgcolor="#7799ee">
 <td valign=bottom>&nbsp;<br>
-<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>text2datetime</strong></big></big> (version 1.0.0)</font></td
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>text2datetime</strong></big></big> (version 1.0.1)</font></td
 ><td align=right valign=bottom
 ><font color="#ffffff" face="helvetica, arial"><a href="text2datetime.html">index</a></font></td></tr></table>
     <p><tt>text2datetime&nbsp;-&nbsp;Convert&nbsp;a&nbsp;text&nbsp;string&nbsp;to&nbsp;a&nbsp;datetime&nbsp;object.&nbsp;Supports&nbsp;relative-to-now&nbsp;modifiers,&nbsp;various&nbsp;timestamps,&nbsp;and&nbsp;words.</tt></p>
@@ -24,16 +24,7 @@
 <font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
     
 <tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
-<td width="100%"><dl><dt><a name="-applyFixedTimeComponent"><strong>applyFixedTimeComponent</strong></a>(datetimeObj, fixedTimeStr)</dt><dd><tt>applyFixedTimeComponent&nbsp;-&nbsp;Update&nbsp;a&nbsp;datetime&nbsp;object,&nbsp;replacing&nbsp;the&nbsp;time&nbsp;portion&nbsp;with&nbsp;the&nbsp;given&nbsp;time&nbsp;string.<br>
-&nbsp;<br>
-PUBLIC&nbsp;FUNCTION<br>
-&nbsp;<br>
-Time&nbsp;string&nbsp;is&nbsp;at&nbsp;minimum&nbsp;hours&nbsp;and&nbsp;minutes,&nbsp;with&nbsp;optional&nbsp;seconds&nbsp;and&nbsp;optional&nbsp;AM/PM.<br>
-&nbsp;<br>
-@param&nbsp;datetimeObj&nbsp;&lt;datetime.datetime&gt;&nbsp;-&nbsp;Datetime<br>
-@param&nbsp;fixedTimeStr&nbsp;&lt;str&gt;&nbsp;-&nbsp;Time&nbsp;String&nbsp;as&nbsp;hours:minutes&nbsp;or&nbsp;hours:minutes:seconds,&nbsp;with&nbsp;optional&nbsp;AM/PM&nbsp;suffix.<br>
-&nbsp;<br>
-@return&nbsp;&lt;datetime.datetime&gt;&nbsp;-&nbsp;datetimeObj&nbsp;with&nbsp;time&nbsp;replaced.</tt></dd></dl>
+<td width="100%"><dl><dt><a name="-applyFixedTimeComponent">
  <dl><dt><a name="-text2datetime"><strong>text2datetime</strong></a>(timeStr, now=None, monthBeforeDay=True)</dt><dd><tt>text2datetime&nbsp;-&nbsp;Convert&nbsp;a&nbsp;time&nbsp;string&nbsp;to&nbsp;a&nbsp;datetime.datetime&nbsp;object.&nbsp;This&nbsp;method&nbsp;supports&nbsp;all&nbsp;the&nbsp;types&nbsp;of&nbsp;time&nbsp;strings&nbsp;described&nbsp;in&nbsp;text2datetime.FORMAT_HELP_MSG<br>
 &nbsp;<br>
 PUBLIC&nbsp;FUNCTION<br>
@@ -45,6 +36,70 @@ PUBLIC&nbsp;FUNCTION<br>
 print&nbsp;(&nbsp;text2datetime.FORMAT_HELP_MSG&nbsp;)&nbsp;for&nbsp;information&nbsp;on&nbsp;the&nbsp;format&nbsp;of&nbsp;timeStr.<br>
 &nbsp;<br>
 @return&nbsp;&lt;datetime.datetime&gt;&nbsp;-&nbsp;Datetime&nbsp;object&nbsp;representing&nbsp;parsed&nbsp;time.</tt></dd></dl>
+<strong>applyFixedTimeComponent</strong></a>(datetimeObj, fixedTimeStr)</dt><dd><tt>applyFixedTimeComponent&nbsp;-&nbsp;Update&nbsp;a&nbsp;datetime&nbsp;object,&nbsp;replacing&nbsp;the&nbsp;time&nbsp;portion&nbsp;with&nbsp;the&nbsp;given&nbsp;time&nbsp;string.<br>
+&nbsp;<br>
+PUBLIC&nbsp;FUNCTION<br>
+&nbsp;<br>
+Time&nbsp;string&nbsp;is&nbsp;at&nbsp;minimum&nbsp;hours&nbsp;and&nbsp;minutes,&nbsp;with&nbsp;optional&nbsp;seconds&nbsp;and&nbsp;optional&nbsp;AM/PM.<br>
+&nbsp;<br>
+@param&nbsp;datetimeObj&nbsp;&lt;datetime.datetime&gt;&nbsp;-&nbsp;Datetime<br>
+@param&nbsp;fixedTimeStr&nbsp;&lt;str&gt;&nbsp;-&nbsp;Time&nbsp;String&nbsp;as&nbsp;hours:minutes&nbsp;or&nbsp;hours:minutes:seconds,&nbsp;with&nbsp;optional&nbsp;AM/PM&nbsp;suffix.<br>
+&nbsp;<br>
+@return&nbsp;&lt;datetime.datetime&gt;&nbsp;-&nbsp;datetimeObj&nbsp;with&nbsp;time&nbsp;replaced.</tt></dd></dl>
+ <dl><dt><a name="-applyRelativeTimeComponents"><strong>applyRelativeTimeComponents</strong></a>(datetimeObj, timeStr)</dt><dd><tt>applyRelativeTimeComponents&nbsp;-&nbsp;Apply&nbsp;the&nbsp;provided&nbsp;relative&nbsp;adjustments&nbsp;to&nbsp;the&nbsp;given&nbsp;datetime.datetime&nbsp;object.<br>
+&nbsp;<br>
+PUBLIC&nbsp;FUNCTION<br>
+&nbsp;<br>
+For&nbsp;more&nbsp;information&nbsp;on&nbsp;the&nbsp;supported&nbsp;relative&nbsp;components,&nbsp;see&nbsp;text2datetime.FORMAT_HELP_MSG<br>
+&nbsp;<br>
+This&nbsp;method&nbsp;only&nbsp;supports&nbsp;relative&nbsp;time&nbsp;components&nbsp;(like&nbsp;+4mo&nbsp;+5d).&nbsp;For&nbsp;all&nbsp;possible&nbsp;time&nbsp;strings,&nbsp;use&nbsp;the&nbsp;text2datetime&nbsp;method.<br>
+&nbsp;<br>
+@param&nbsp;datetimeObj&nbsp;&lt;datetime.datetime&gt;&nbsp;-&nbsp;The&nbsp;datetime&nbsp;which&nbsp;serves&nbsp;as&nbsp;the&nbsp;starting&nbsp;point.&nbsp;Use&nbsp;datetime.datetime.now()&nbsp;to&nbsp;calculate&nbsp;relative&nbsp;to&nbsp;current&nbsp;date&nbsp;and&nbsp;time.<br>
+@param&nbsp;timeStr&nbsp;&lt;str&gt;&nbsp;-&nbsp;A&nbsp;string&nbsp;of&nbsp;relative&nbsp;components&nbsp;(like&nbsp;+5d&nbsp;for&nbsp;plus&nbsp;five&nbsp;days,&nbsp;or&nbsp;-2h&nbsp;for&nbsp;minus&nbsp;two&nbsp;hours.)&nbsp;See&nbsp;text2datetime.FORMAT_HELP_MSG&nbsp;for&nbsp;details.<br>
+&nbsp;<br>
+@return&nbsp;&lt;datetime.datetime&gt;&nbsp;-&nbsp;A&nbsp;datetime&nbsp;object&nbsp;representing&nbsp;the&nbsp;date&nbsp;and&nbsp;time&nbsp;derived&nbsp;after&nbsp;applying&nbsp;all&nbsp;the&nbsp;relative&nbsp;components&nbsp;to&nbsp;the&nbsp;provided&nbsp;datetime.</tt></dd></dl>
+ <dl><dt><a name="-applyTimeWords"><strong>applyTimeWords</strong></a>(datetimeObj, timeStr)</dt><dd><tt>applyTimeWords&nbsp;-&nbsp;Apply&nbsp;one&nbsp;of&nbsp;several&nbsp;words&nbsp;that&nbsp;describe&nbsp;a&nbsp;time&nbsp;delta&nbsp;to&nbsp;the&nbsp;given&nbsp;datetime&nbsp;object.&nbsp;Example,&nbsp;"tomorrow"<br>
+&nbsp;<br>
+PUBLIC&nbsp;FUNCTION<br>
+&nbsp;<br>
+This&nbsp;method&nbsp;supports&nbsp;only&nbsp;time&nbsp;words,&nbsp;for&nbsp;all&nbsp;possible&nbsp;time&nbsp;transformations,&nbsp;use&nbsp;the&nbsp;text2datetime&nbsp;method.<br>
+&nbsp;<br>
+See&nbsp;text2datetime.FORMAT_HELP_MSG&nbsp;for&nbsp;all&nbsp;available&nbsp;words.<br>
+&nbsp;<br>
+@param&nbsp;datetimeObj&nbsp;-&nbsp;&lt;datetime.datetime&gt;&nbsp;-&nbsp;The&nbsp;origin&nbsp;datetime&nbsp;object<br>
+@param&nbsp;timeStr&nbsp;&lt;str&gt;&nbsp;-&nbsp;One&nbsp;of&nbsp;several&nbsp;words&nbsp;that&nbsp;describe&nbsp;a&nbsp;relative&nbsp;delta,&nbsp;see&nbsp;text2datetime.FORMAT_HELP_MSG&nbsp;for&nbsp;all&nbsp;available&nbsp;words.&nbsp;Case&nbsp;insensitive.<br>
+&nbsp;<br>
+@return&nbsp;-&nbsp;&lt;datetime.datetime/None&gt;&nbsp;-&nbsp;The&nbsp;transformed&nbsp;datetime.datetime&nbsp;object&nbsp;if&nbsp;a&nbsp;valid&nbsp;word&nbsp;was&nbsp;given,&nbsp;otherwise&nbsp;None&nbsp;if&nbsp;there&nbsp;was&nbsp;no&nbsp;match.</tt></dd></dl>
+ <dl><dt><a name="-getDatetimeFromAmericanTime"><strong>getDatetimeFromAmericanTime</strong></a>(timeStr)</dt><dd><tt>getDatetimeFromAmericanTime&nbsp;-&nbsp;Convert&nbsp;a&nbsp;string&nbsp;from&nbsp;American&nbsp;format&nbsp;(month/day/year),&nbsp;with&nbsp;an&nbsp;optional&nbsp;time,&nbsp;to&nbsp;a&nbsp;datetime&nbsp;object.<br>
+&nbsp;<br>
+PUBLIC&nbsp;FUNCTION&nbsp;-&nbsp;Specifically&nbsp;handles&nbsp;fixed&nbsp;date&nbsp;(and&nbsp;potentially&nbsp;time)&nbsp;formatted&nbsp;strings.&nbsp;For&nbsp;all&nbsp;possible&nbsp;time&nbsp;strings,&nbsp;use&nbsp;the&nbsp;text2datetime&nbsp;method.<br>
+&nbsp;<br>
+@param&nbsp;timeStr&nbsp;&lt;str&gt;&nbsp;-&nbsp;A&nbsp;string&nbsp;representing&nbsp;time&nbsp;in&nbsp;American&nbsp;format&nbsp;(month/day/year).&nbsp;Can&nbsp;also&nbsp;be&nbsp;followed&nbsp;by&nbsp;time,&nbsp;either&nbsp;in<br>
+&nbsp;&nbsp;&nbsp;&nbsp;hours:minutes:seconds&nbsp;or&nbsp;hours:minutes.&nbsp;Uses&nbsp;a&nbsp;24-hour&nbsp;clock&nbsp;unless&nbsp;"AM"&nbsp;or&nbsp;"PM"&nbsp;is&nbsp;provided&nbsp;at&nbsp;the&nbsp;end&nbsp;of&nbsp;timeStr.&nbsp;Year&nbsp;can&nbsp;be&nbsp;2&nbsp;or&nbsp;4&nbsp;digit.<br>
+&nbsp;<br>
+This&nbsp;function&nbsp;is&nbsp;equivalent&nbsp;to&nbsp;<a href="#-getDatetimeFromDateStr">getDatetimeFromDateStr</a>(timeStr,&nbsp;monthBeforeDay=True)<br>
+&nbsp;<br>
+@return&nbsp;&lt;datetime.datetime&gt;&nbsp;-&nbsp;A&nbsp;datetime&nbsp;object&nbsp;representing&nbsp;the&nbsp;converted&nbsp;time.</tt></dd></dl>
+ <dl><dt><a name="-getDatetimeFromDateStr"><strong>getDatetimeFromDateStr</strong></a>(timeStr, monthBeforeDay)</dt><dd><tt>getDatetimeFromDateStr&nbsp;-&nbsp;Convert&nbsp;a&nbsp;string&nbsp;that&nbsp;contains&nbsp;a&nbsp;date&nbsp;(month/day/year&nbsp;or&nbsp;day/month/year),&nbsp;with&nbsp;an&nbsp;optional&nbsp;time,&nbsp;to&nbsp;a&nbsp;datetime&nbsp;object.<br>
+&nbsp;<br>
+PUBLIC&nbsp;FUNCTION&nbsp;-&nbsp;Specifically&nbsp;handles&nbsp;fixed&nbsp;date&nbsp;(and&nbsp;potentially&nbsp;time)&nbsp;formatted&nbsp;strings.&nbsp;For&nbsp;all&nbsp;possible&nbsp;time&nbsp;strings,&nbsp;use&nbsp;the&nbsp;text2datetime&nbsp;method.<br>
+&nbsp;<br>
+@param&nbsp;timeStr&nbsp;&lt;str&gt;&nbsp;-&nbsp;A&nbsp;string&nbsp;representing&nbsp;time&nbsp;containing&nbsp;a&nbsp;forward-slash&nbsp;separated&nbsp;date,&nbsp;optionally&nbsp;followed&nbsp;by&nbsp;time,&nbsp;either&nbsp;in<br>
+&nbsp;&nbsp;&nbsp;&nbsp;hours:minutes:seconds&nbsp;or&nbsp;hours:minutes.&nbsp;Uses&nbsp;a&nbsp;24-hour&nbsp;clock&nbsp;unless&nbsp;"AM"&nbsp;or&nbsp;"PM"&nbsp;is&nbsp;provided&nbsp;at&nbsp;the&nbsp;end&nbsp;of&nbsp;timeStr.&nbsp;Year&nbsp;can&nbsp;be&nbsp;2&nbsp;or&nbsp;4&nbsp;digit.<br>
+&nbsp;<br>
+@param&nbsp;monthBeforeDay&nbsp;&lt;bool&gt;&nbsp;-&nbsp;If&nbsp;True,&nbsp;date&nbsp;will&nbsp;be&nbsp;assumed&nbsp;month/day/year.&nbsp;If&nbsp;False,&nbsp;date&nbsp;will&nbsp;be&nbsp;assumed&nbsp;day/month/year.<br>
+&nbsp;<br>
+@return&nbsp;&lt;datetime.datetime&gt;&nbsp;-&nbsp;A&nbsp;datetime&nbsp;object&nbsp;representing&nbsp;the&nbsp;converted&nbsp;time.</tt></dd></dl>
+ <dl><dt><a name="-getDatetimeFromEuropeanTime"><strong>getDatetimeFromEuropeanTime</strong></a>(timeStr)</dt><dd><tt>getDatetimeFromAmericanTime&nbsp;-&nbsp;Convert&nbsp;a&nbsp;string&nbsp;from&nbsp;European&nbsp;format&nbsp;(day/month/year),&nbsp;with&nbsp;an&nbsp;optional&nbsp;time,&nbsp;to&nbsp;a&nbsp;datetime&nbsp;object.<br>
+&nbsp;<br>
+PUBLIC&nbsp;FUNCTION&nbsp;-&nbsp;Specifically&nbsp;handles&nbsp;fixed&nbsp;date&nbsp;(and&nbsp;potentially&nbsp;time)&nbsp;formatted&nbsp;strings.&nbsp;For&nbsp;all&nbsp;possible&nbsp;time&nbsp;strings,&nbsp;use&nbsp;the&nbsp;text2datetime&nbsp;method.<br>
+&nbsp;<br>
+@param&nbsp;timeStr&nbsp;&lt;str&gt;&nbsp;-&nbsp;A&nbsp;string&nbsp;representing&nbsp;time&nbsp;in&nbsp;European&nbsp;format&nbsp;(day/month/year).&nbsp;Can&nbsp;also&nbsp;be&nbsp;followed&nbsp;by&nbsp;time,&nbsp;either&nbsp;in<br>
+&nbsp;&nbsp;&nbsp;&nbsp;hours:minutes:seconds&nbsp;or&nbsp;hours:minutes.&nbsp;Uses&nbsp;a&nbsp;24-hour&nbsp;clock&nbsp;unless&nbsp;"AM"&nbsp;or&nbsp;"PM"&nbsp;is&nbsp;provided&nbsp;at&nbsp;the&nbsp;end&nbsp;of&nbsp;timeStr.&nbsp;Year&nbsp;can&nbsp;be&nbsp;2&nbsp;or&nbsp;4&nbsp;digit.<br>
+&nbsp;<br>
+This&nbsp;function&nbsp;is&nbsp;equivalent&nbsp;to&nbsp;<a href="#-getDatetimeFromDateStr">getDatetimeFromDateStr</a>(timeStr,&nbsp;monthBeforeDay=False)<br>
+&nbsp;<br>
+@return&nbsp;&lt;datetime.datetime&gt;&nbsp;-&nbsp;A&nbsp;datetime&nbsp;object&nbsp;representing&nbsp;the&nbsp;converted&nbsp;time.</tt></dd></dl>
 </td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#55aa55">
@@ -53,6 +108,6 @@ print&nbsp;(&nbsp;text2datetime.FORMAT_HELP_MSG&nbsp;)&nbsp;for&nbsp;information
     
 <tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
 <td width="100%"><strong>FORMAT_HELP_MSG</strong> = 'Date should be in one of the following forms:<font color="#c040c0">\n\n</font> ...ck format, starting with 00=midnight, 23 = 11PM<font color="#c040c0">\n\n</font>'<br>
-<strong>__all__</strong> = ('FORMAT_HELP_MSG', 'text2datetime', 'applyFixedTimeComponent')<br>
-<strong>__version_tuple__</strong> = (1, 0, 0)</td></tr></table>
+<strong>__all__</strong> = ('FORMAT_HELP_MSG', 'text2datetime', 'applyFixedTimeComponent', 'applyRelativeTimeComponents', 'applyTimeWords', 'getDatetimeFromEuropeanTime', 'getDatetimeFromAmericanTime', 'getDatetimeFromDateStr')<br>
+<strong>__version_tuple__</strong> = (1, 0, 1)</td></tr></table>
 </body></html>

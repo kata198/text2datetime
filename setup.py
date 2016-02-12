@@ -21,7 +21,7 @@ if __name__ == '__main__':
         long_description = summary
 
     setup(name='text2datetime',
-        version='1.0.0',
+        version='1.0.1',
         modules=['text2datetime'],
         packages=['text2datetime'],
         provides=['text2datetime'],
