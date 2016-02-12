@@ -1,18 +1,54 @@
 # text2datetime
-Python module to convert relative or absolute text to datetime, like "+12h" to 12 hours in future.
+Python module which supports converting an extensive number of textual ways to represent both absolute and relative time.
 
-This is provided by the function text2datetime.text2datetime
+Some examples include:
+
+"Tomorrow 5:00AM" - for tomorrow at 5am
+
+"+3yr +2d" - For three years and two days in future
+
+"-5mo 16:00" - For 5 months ago at 16:00 hours (4PM)
+
+"1/8/2015" - Depending on monthBeforeDate flag, could be Jan 8th or August 1st, 2015.
+
+
+
+The primary function which supports converting all of these various texts is *text2datetime.text2datetime*
+
+**text2datetime method**
+
+
+	def text2datetime(timeStr, now=None, monthBeforeDay=True):
+
+
+timeStr - The text to convert to a datetime.datetime object
+
+now - Defaults to now, but you can calculate relative to a different date if you provide a datetime.datetime here
+
+monthBeforeDay - For relevant formats, True will have the expected format be month-before-day (American format), False will have day before month (European format).
+
+**Other Methods**
+
+While text2datetime supports interpreting all known forms of date and time strings, there are individual public methods for each form you may also use.
+
+See  https://raw.githubusercontent.com/kata198/text2datetime/master/doc/text2datetime.html for pydoc of all methods.
+
+
+
+Supported Formats
+-----------------
 
 
 Date should be in one of the following forms:
 
- - **Relative Modifiers**
+ -  *Relative Modifiers*
 
-Relative modifiers represent a delta from current time, current date.
+	Relative modifiers represent a delta from current time, current date.
 
-Each modifier starts with a direction (+ or -), then a number, then a unit.
+	Each modifier starts with a direction (+ or -), then a number, then a unit.
 
-  Example:  +3d  means '3 days from this very second'
+
+	Example:  +3d  means '3 days from this very second'
 
 	Available modifiers:
 
@@ -28,38 +64,50 @@ Each modifier starts with a direction (+ or -), then a number, then a unit.
 	for example "+3d 12:00:00" would be noon three days from now.
 
 
- - **Fixed String**
+ - *Fixed String*
 
-   One of the following fixed strings:
+	One of the following fixed strings:
 
+
+		"now"           - Right now (to the second)
 		"today"         - Beginning of today (00:00:00)
-		"today end"     - End of today (23:59:59)
 		"tomorrow"      - Beginning of tomorrow
-		"tomorrow end"  - End of tomorrow
 		"yesterday"     - Beginning of yesterday
-		"yesterday end" - End of yesterday
 
- - **ctime format**
+	Can optionally be followed with a time, as hour:minute or hour:minute:second, otherwise midnight (00:00:00) is used. Clock is 24-hour clock, 00=midnight, unless "PM" or "AM" is at the end.
 
-   Ctime format with optional day of week
+	Example: "tomorrow 5:00PM"
 
-		3-letter-day) [3-letter-month] [2-digit date] [2-hour]:[2-minute]:[2-second] [4-digit Year]
+ - *ctime format*
 
-     Example: Wed Jan 28 12:28:13 2015
+	Ctime format with optional day of week
 
- - **American Slash Format**
+		(3-letter-day) [3-letter-month] [2-digit date] [2-hour]:[2-minute]:[2-second] [4-digit Year]
 
-	numeric Month/Date/Year with optional time as hour:minute or hour:minute:second. Clock is a 24-hour clock, 00=midnight, unless "PM" or "AM" is at the end.
+	Example: Wed Jan 28 12:28:13 2015
 
-    e.x.: 1/28/2015   or  1/28/2015  12:28:13
+ - *American Date Format*
 
- - **Time Only**
+	numeric Month/Day/Year with optional time as hour:minute or hour:minute:second. Clock is a 24-hour clock, 00=midnight, unless "PM" or "AM" is at the end.
+
+	e.x.: 1/28/2015   or  1/28/2015  12:28:13
+
+	This is used when monthBeforeDay=True (default) in text2datetime, getDatetimeFromDateStr when monthBeforeDay=True, and getDatetimeFromAmericanTime
+
+ - *European Date Format*
+
+	numeric Day/Month/Year with optional time as hour:minute or hour:minute:second. Clock is a 24-hour clock, 00=midnight, unless "PM" or "AM" is at the end.
+
+	e.x.: 28/1/2015   or  28/1/2015  12:28:13
+
+	This is used when monthBeforeDay=False in text2datetime, getDatetimeFromDateStr when monthBeforeDay=False, and getDatetimeFromEuropeanTime
+
+ - *Time Only*
 
 	time as hour:minute or hour:minute:second will use current date. Clock is a 24 hour clock, 00=midnight, unless "PM" or "AM" is at the end.
 
-NOTES:
+**NOTES:**
 
-	Unless AM/PM is specified in formats that support it, hours are in 23-hour clock format, starting with 00=midnight, 23 = 11PM
-
+	Unless AM/PM is specified in formats that support it, hours are in 24-hour clock format, starting with 00=midnight, 23 = 11PM
 
 
