@@ -1,5 +1,5 @@
 # text2datetime
-Python module which supports converting an extensive number of textual ways to represent both absolute and relative time.
+Python module which can convert an extensive number of ways to represent time with strings to datetime objects
 
 Some examples include:
 
