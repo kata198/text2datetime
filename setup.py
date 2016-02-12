@@ -26,7 +26,6 @@ if __name__ == '__main__':
         packages=['text2datetime'],
         provides=['text2datetime'],
         install_requires=['python-dateutil'],
-        requires=['python-dateutil'],
         keywords=['text2datetime', 'text', 'string', 'time', 'conversion', 'datetime', 'tomorrow', 'relative', 'date', 'convert'],
         url='https://github.com/kata198/text2datetime',
         long_description=long_description,
