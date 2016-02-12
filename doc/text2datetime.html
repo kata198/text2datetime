@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: package text2datetime</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>text2datetime</strong></big></big> (version 1.0.0)</font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href="text2datetime.html">index</a></font></td></tr></table>
+    <p><tt>text2datetime&nbsp;-&nbsp;Convert&nbsp;a&nbsp;text&nbsp;string&nbsp;to&nbsp;a&nbsp;datetime&nbsp;object.&nbsp;Supports&nbsp;relative-to-now&nbsp;modifiers,&nbsp;various&nbsp;timestamps,&nbsp;and&nbsp;words.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Package Contents</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top></td><td width="25%" valign=top></td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-applyFixedTimeComponent"><strong>applyFixedTimeComponent</strong></a>(datetimeObj, fixedTimeStr)</dt><dd><tt>applyFixedTimeComponent&nbsp;-&nbsp;Update&nbsp;a&nbsp;datetime&nbsp;object,&nbsp;replacing&nbsp;the&nbsp;time&nbsp;portion&nbsp;with&nbsp;the&nbsp;given&nbsp;time&nbsp;string.<br>
+&nbsp;<br>
+PUBLIC&nbsp;FUNCTION<br>
+&nbsp;<br>
+Time&nbsp;string&nbsp;is&nbsp;at&nbsp;minimum&nbsp;hours&nbsp;and&nbsp;minutes,&nbsp;with&nbsp;optional&nbsp;seconds&nbsp;and&nbsp;optional&nbsp;AM/PM.<br>
+&nbsp;<br>
+@param&nbsp;datetimeObj&nbsp;&lt;datetime.datetime&gt;&nbsp;-&nbsp;Datetime<br>
+@param&nbsp;fixedTimeStr&nbsp;&lt;str&gt;&nbsp;-&nbsp;Time&nbsp;String&nbsp;as&nbsp;hours:minutes&nbsp;or&nbsp;hours:minutes:seconds,&nbsp;with&nbsp;optional&nbsp;AM/PM&nbsp;suffix.<br>
+&nbsp;<br>
+@return&nbsp;&lt;datetime.datetime&gt;&nbsp;-&nbsp;datetimeObj&nbsp;with&nbsp;time&nbsp;replaced.</tt></dd></dl>
+ <dl><dt><a name="-text2datetime"><strong>text2datetime</strong></a>(timeStr, now=None, monthBeforeDay=True)</dt><dd><tt>text2datetime&nbsp;-&nbsp;Convert&nbsp;a&nbsp;time&nbsp;string&nbsp;to&nbsp;a&nbsp;datetime.datetime&nbsp;object.&nbsp;This&nbsp;method&nbsp;supports&nbsp;all&nbsp;the&nbsp;types&nbsp;of&nbsp;time&nbsp;strings&nbsp;described&nbsp;in&nbsp;text2datetime.FORMAT_HELP_MSG<br>
+&nbsp;<br>
+PUBLIC&nbsp;FUNCTION<br>
+&nbsp;<br>
+@param&nbsp;timeStr&nbsp;&lt;str&gt;&nbsp;-&nbsp;String&nbsp;of&nbsp;time.<br>
+@param&nbsp;now&nbsp;&lt;None/datetime.datetime&gt;&nbsp;-&nbsp;Default&nbsp;None&nbsp;will&nbsp;use&nbsp;current&nbsp;time.&nbsp;Otherwise,&nbsp;calculate&nbsp;time&nbsp;relative&nbsp;to&nbsp;given&nbsp;datetime.<br>
+@param&nbsp;monthBeforeDay&nbsp;&lt;bool&gt;&nbsp;-&nbsp;If&nbsp;True,&nbsp;American&nbsp;time&nbsp;format&nbsp;will&nbsp;be&nbsp;used&nbsp;when&nbsp;applicable&nbsp;(month/day/year).&nbsp;If&nbsp;False,&nbsp;European&nbsp;time&nbsp;(day/month/year)&nbsp;will&nbsp;be&nbsp;used&nbsp;when&nbsp;applicable.<br>
+&nbsp;<br>
+print&nbsp;(&nbsp;text2datetime.FORMAT_HELP_MSG&nbsp;)&nbsp;for&nbsp;information&nbsp;on&nbsp;the&nbsp;format&nbsp;of&nbsp;timeStr.<br>
+&nbsp;<br>
+@return&nbsp;&lt;datetime.datetime&gt;&nbsp;-&nbsp;Datetime&nbsp;object&nbsp;representing&nbsp;parsed&nbsp;time.</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>FORMAT_HELP_MSG</strong> = 'Date should be in one of the following forms:<font color="#c040c0">\n\n</font> ...ck format, starting with 00=midnight, 23 = 11PM<font color="#c040c0">\n\n</font>'<br>
+<strong>__all__</strong> = ('FORMAT_HELP_MSG', 'text2datetime', 'applyFixedTimeComponent')<br>
+<strong>__version_tuple__</strong> = (1, 0, 0)</td></tr></table>
+</body></html>
