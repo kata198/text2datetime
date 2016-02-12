@@ -31,8 +31,7 @@ monthBeforeDay - For relevant formats, True will have the expected format be mon
 
 While text2datetime supports interpreting all known forms of date and time strings, there are individual public methods for each form you may also use.
 
-See  https://raw.githubusercontent.com/kata198/text2datetime/master/doc/text2datetime.html for pydoc of all methods.
-
+See http://htmlpreview.github.io/?https://github.com/kata198/text2datetime/blob/master/doc/text2datetime.html for pydoc of all methods.
 
 
 Supported Formats
